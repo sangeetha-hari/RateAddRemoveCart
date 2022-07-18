@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Navi from './Navi';
+import Section from './Section';
+import { useState } from 'react';
+import Header from './Header';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import data from './Product.json';
+import { Container } from 'reactstrap';
 
 function App() {
+  // const[list,setlist] =
+  const [cart, setCart]=useState(0);
+const handlerAdd=(index)=>{
+
+  setCart(cart+1);
+  data[index].productCount=data[index].productCount+1
+  console.log(cart);
+}
+
+const handlerRemove=()=>{
+  setCart(cart-1);
+  console.log(cart);
+}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <Container>
+      <Navi cart={cart}/>
+      <Header />
+      <Section cart={cart} handlerAdd={handlerAdd} handlerRemove={handlerRemove}/>
+      </Container>
   );
 }
 
