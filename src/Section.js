@@ -5,6 +5,8 @@ import data from "./Product.json";
 //     sr:"https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
 //  }]
 export default function Section(props) {
+
+  
   return (
 
     <div>
@@ -58,7 +60,7 @@ export default function Section(props) {
                         <a
                           className="btn btn-outline-dark mt-auto"
                           href="#"
-                          onClick={props.handlerAdd}
+                          onClick={() =>{props.handlerAdd(index);props.setItemArray(index);}}
                         >
                           {ele["product-action"]}
                         </a>
