@@ -1,4 +1,4 @@
-import { getValue } from "@testing-library/user-event/dist/utils";
+// import { getValue } from "@testing-library/user-event/dist/utils";
 import React, { useState } from "react";
 import data from "./Product.json";
 //  let da=[{
@@ -58,9 +58,10 @@ export default function Section(props) {
                     <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
                       <div className="text-center">
                         <a
-                          className="btn btn-outline-dark mt-auto"
+                          className={props.itemArray[index]===0?("btn btn-outline-dark mt-auto") :("btn btn-outline-dark mt-aut disabled")}
                           href="#"
-                          onClick={() =>{props.handlerAdd(index);props.setItemArray(index);}}
+                          onClick={() =>{props.handlerAdd(index);}
+                        }
                         >
                           {ele["product-action"]}
                         </a>
@@ -70,9 +71,11 @@ export default function Section(props) {
                       <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
                       <div className="text-center">
                         <a 
-                          className="btn btn-outline-dark mt-auto "
+                          className={props.itemArray[index]>=1?("btn btn-outline-dark mt-auto "):("btn btn-outline-dark mt-auto disabled")}
+                          // className="btn btn-outline-dark mt-auto disabled"
                           href="#" 
-                          onClick={props.handlerRemove}
+                          onClick={()=>{props.handlerRemove(index)}
+                        }
                         >
                           Remove Item
                         </a>
